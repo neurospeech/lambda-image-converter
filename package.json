@@ -1,0 +1,25 @@
+{
+  "name": "lambda-image-converter",
+  "version": "1.0.0",
+  "description": "Lambda Image Converter Container",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neurospeech/lambda-image-converter.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/neurospeech/lambda-image-converter/issues"
+  },
+  "homepage": "https://github.com/neurospeech/lambda-image-converter#readme",
+  "dependencies": {
+    "sharp": "^0.32.0"
+  }
+}
