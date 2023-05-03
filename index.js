@@ -1,3 +1,3 @@
 const App = require("./dist/App").default;
 
-exports.handler = (event, context) => App.save(event.body ?? event.queryStringParameters);
+exports.handler = (event, context) => App.run(event.body ?? event.queryStringParameters);
