@@ -4,7 +4,8 @@
   "description": "Lambda Image Converter Container",
   "main": "index.js",
   "directories": {
-    "test": "tests"
+    "test": "tests",
+    "postversion": "git push --follow-tags"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
