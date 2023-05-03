@@ -12,7 +12,17 @@ interface ICommandInput {
 
 export default class App {
 
-    static async run({format, url, extension, output}) {
+    static async run(x) {
+        try {
+            return await this.runInternal(x);
+        } catch (error) {
+            console.error(`failed for ${JSON.stringify(x)}`);
+            console.error(error);
+            throw error;
+        }
+    }
+
+    static async runInternal({format, url, extension, output}) {
         let fileName = format;
         let matches = format.match(/(\w+)\(([^\)]+)\)/);
         let args = [];
