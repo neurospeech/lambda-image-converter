@@ -1,4 +1,4 @@
-import * as sharp from "sharp";
+import sharp from "sharp";
 import * as faceapi from "./common/faceapi";
 const faceApi = faceapi as any;
 import { Box, FaceDetection } from "@vladmandic/face-api";

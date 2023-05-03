@@ -1,4 +1,4 @@
-import * as sharp from "sharp";
+import sharp from "sharp";
 import BaseImage from "../BaseImage";
 
 export default class Size extends BaseImage {

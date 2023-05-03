@@ -1,5 +1,5 @@
 // tslint:disable: no-bitwise
-import * as sharp from "sharp";
+import sharp from "sharp";
 import BaseImage from "../BaseImage";
 import detect from "../detect";
 
