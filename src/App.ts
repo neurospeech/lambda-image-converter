@@ -66,6 +66,12 @@ export default class App {
                     compressionLevel: 9
                 });
                 break;
+            case ".webp":
+                r = r.webp({
+                    nearLossless: true,
+                    quality: 95
+                });
+                break;
             case ".gif":
                 r = r.gif();
                 break;
