@@ -29,7 +29,7 @@
     "canvas": "^2.8.0",
     "mime-types": "^2.1.35",
     "node-fetch": "^2.6.7",
-    "sharp": "^0.30.7",
+    "sharp": "^0.33.5",
     "tmp-promise": "^3.0.3"
   },
   "devDependencies": {

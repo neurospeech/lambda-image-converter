@@ -20,7 +20,7 @@ RUN mkdir -p ${FUNCTION_DIR}/
 WORKDIR ${FUNCTION_DIR}
 
 RUN npm install aws-lambda-ric
-RUN npm install sharp
+RUN npm install --include=optional sharp
 
 # Build Stage 2: Copy Build Stage 1 files in to Stage 2. Install chromium dependencies and chromium.
 FROM node:18-buster-slim
