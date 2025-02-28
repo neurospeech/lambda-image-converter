@@ -1,8 +1,10 @@
 import * as mime from "mime-types";
 import { BlockBlobClient } from "@azure/storage-blob";
 import { existsSync, promises } from "fs";
+import { writeFile, readFile } from "fs/promises";
 import fetch from "node-fetch";
 import { file } from "tmp-promise";
+import { heicConvert } from "./heicConvert";
 
 interface ICommandInput {
     url: string;
@@ -45,21 +47,43 @@ export default class App {
             // error...
             throw new Error(`${rs.statusText}\r\n${await rs.text()}`);
         }
-        const input = await rs.buffer();
+        let input = await rs.buffer();
+
+        const inputFile = await file({ mode: 0o644, prefix: "tmp-" , postfix: extension});
+        await writeFile(inputFile.path, input);
+
+        try {
+            return await this.runInternalConvert({ inputFile, extension, fileName, args, output });
+        } catch (error) {
+            if (error.toString().includes("No decoding plugin")) {
+                const pngFile = await heicConvert(inputFile);
+                return await this.runInternalConvert({ inputFile: pngFile, extension, fileName, args, output });
+            }
+        }
+    }
+
+    private static async runInternalConvert(
+        {
+            inputFile,
+            extension,
+            fileName,
+            args,
+            output
+        }) {
+        const input = await readFile(inputFile.path);
+
+        let t = await file({ mode: 0o644, prefix: "tmp-", postfix: extension });
 
 
-        let t = await file({ mode: 0o644, prefix: "tmp-" , postfix: extension});
-
-        
-        var templateClass  = require("../dist/formats/" + fileName).default;
+        var templateClass = require("../dist/formats/" + fileName).default;
 
         var template = new (templateClass)();
 
-        let r = await template.transformFileAsync(input, ... args);
+        let r = await template.transformFileAsync(input, ...args);
 
-        switch(extension) {
+        switch (extension) {
             case ".jpg":
-                r = r.jpeg({ quality: 95});
+                r = r.jpeg({ quality: 95 });
                 break;
             case ".png":
                 r = r.png({
@@ -83,9 +107,8 @@ export default class App {
             // save to url...
             await this.upload({ url: output, filePath: t.path });
 
-            r = `"Done"`
+            r = `"Done"`;
         }
-
         return r;
     }
 

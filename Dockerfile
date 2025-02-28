@@ -1,7 +1,7 @@
 ARG FUNCTION_DIR="/function"
 
 # Build Stage 1: Install aws-lambda-ric dependencies, npm install package.json dependencies
-FROM node:18-buster as build-image
+FROM node:20-buster as build-image
 # Include global arg in this stage of the build
 ARG FUNCTION_DIR
 # AWS Lambda runtime dependencies
@@ -23,7 +23,7 @@ RUN npm install aws-lambda-ric
 RUN npm install --include=optional sharp
 
 # Build Stage 2: Copy Build Stage 1 files in to Stage 2. Install chromium dependencies and chromium.
-FROM node:18-buster-slim
+FROM node:20-buster-slim
 # Include global arg in this stage of the build
 ARG FUNCTION_DIR
 # Set working directory to function root directory
