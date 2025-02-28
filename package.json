@@ -1,6 +1,6 @@
 {
   "name": "lambda-image-converter",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "Lambda Image Converter Container",
   "main": "index.js",
   "directories": {
