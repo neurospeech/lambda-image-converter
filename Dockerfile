@@ -52,5 +52,5 @@ COPY node_modules ${FUNCTION_DIR}/node_modules
 WORKDIR ${FUNCTION_DIR}
 
 # ENTRYPOINT ["/usr/local/bin/npx", "aws-lambda-ric"]
-ENTRYPOINT ["/usr/local/bin/node", "/function/node_modules/aws-lambda-ric/dist/index.js"]
+ENTRYPOINT ["/usr/local/bin/node", "/function/node_modules/aws-lambda-ric/dist/index.mjs"]
 CMD [ "index.handler" ]
