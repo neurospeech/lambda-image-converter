@@ -1,5 +1,5 @@
 import sharp from "sharp";
-import BaseImage from "../BaseImage";
+import BaseImage from "../BaseImage.js";
 export default class Circle extends BaseImage {
 
   public async transformAsync(

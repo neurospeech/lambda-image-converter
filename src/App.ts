@@ -4,8 +4,8 @@ import { existsSync, promises } from "fs";
 import { writeFile, readFile } from "fs/promises";
 import fetch from "node-fetch";
 import { file } from "tmp-promise";
-import { heicConvert } from "./heicConvert";
-import uploadS3 from "./common/uploadS3";
+import { heicConvert } from "./heicConvert.js";
+import uploadS3 from "./common/uploadS3.js";
 
 interface ICommandInput {
     url: string;

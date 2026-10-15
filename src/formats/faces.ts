@@ -1,6 +1,6 @@
 import * as sharp from "sharp";
-import BaseImage from "../BaseImage";
-import detect from "../detect700";
+import BaseImage from "../BaseImage.js";
+import detect from "../detect700.js";
 
 export default class Faces extends BaseImage {
 

@@ -1,4 +1,4 @@
-import * as faceapi from "./common/faceapi";
+import * as faceapi from "./common/faceapi.js";
 const faceApi = faceapi as any;
 import { FaceDetection } from "@vladmandic/face-api";
 

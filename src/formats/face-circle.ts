@@ -1,7 +1,7 @@
 // tslint:disable: no-bitwise
 import sharp from "sharp";
-import BaseImage from "../BaseImage";
-import detect from "../detect700";
+import BaseImage from "../BaseImage.js";
+import detect from "../detect700.js";
 
 export default class Headshot extends BaseImage {
 

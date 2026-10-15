@@ -1,4 +1,4 @@
-import * as faceApi from "./faceapi";
+import * as faceApi from "./faceapi.js";
 
 const faceapi = faceApi as any;
 
