@@ -53,4 +53,4 @@ WORKDIR ${FUNCTION_DIR}
 
 # ENTRYPOINT ["/usr/local/bin/npx", "aws-lambda-ric"]
 ENTRYPOINT ["/usr/local/bin/node", "/function/node_modules/aws-lambda-ric/index.mjs"]
-CMD [ "index.js.handler" ]
+CMD [ "index.mjs.handler" ]
