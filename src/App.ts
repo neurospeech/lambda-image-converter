@@ -2,7 +2,6 @@ import * as mime from "mime-types";
 import { BlockBlobClient } from "@azure/storage-blob";
 import { existsSync, promises } from "fs";
 import { writeFile, readFile } from "fs/promises";
-import fetch from "node-fetch";
 import { file } from "tmp-promise";
 import { heicConvert } from "./heicConvert.js";
 import uploadS3 from "./common/uploadS3.js";
@@ -48,10 +47,10 @@ export default class App {
             // error...
             throw new Error(`${rs.statusText}\r\n${await rs.text()}`);
         }
-        let input = await rs.buffer();
+        let input = await rs.arrayBuffer();
 
         const inputFile = await file({ mode: 0o644, prefix: "tmp-" , postfix: extension});
-        await writeFile(inputFile.path, input);
+        await writeFile(inputFile.path, input as any);
 
         try {
             return await this.runInternalConvert({ inputFile, extension, fileName, args, output });
