@@ -5,6 +5,7 @@ import { writeFile, readFile } from "fs/promises";
 import fetch from "node-fetch";
 import { file } from "tmp-promise";
 import { heicConvert } from "./heicConvert";
+import uploadS3 from "./common/uploadS3";
 
 interface ICommandInput {
     url: string;
@@ -125,7 +126,13 @@ export default class App {
             // use put...
             return this.uploadAzure(x);
         }
-        console.log(`File ${x.url} not supported for upload.`);
+        // upload directly..
+        console.log(`Uploading ${x.filePath} to ${x.url}`);
+        await uploadS3(x.url, x.filePath);
+
+        try {
+            await promises.unlink(x.filePath);
+        } catch {}
     }
     
     static async uploadAzure({url, filePath}: ICommandInput) {

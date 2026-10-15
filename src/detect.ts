@@ -2,7 +2,7 @@ import * as faceapi from "./common/faceapi";
 const faceApi = faceapi as any;
 import { FaceDetection } from "@vladmandic/face-api";
 
-import { canvas, faceDetectionNet, faceDetectionOptions, saveFile } from "./common";
+import { canvas, faceDetectionNet, faceDetectionOptions } from "./common";
 
 export default async function detect(input): Promise<FaceDetection[]> {
 

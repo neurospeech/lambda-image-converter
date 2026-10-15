@@ -3,7 +3,7 @@ import * as faceapi from "./common/faceapi";
 const faceApi = faceapi as any;
 import { Box, FaceDetection } from "@vladmandic/face-api";
 
-import { canvas, faceDetectionNet, faceDetectionOptions, saveFile } from "./common";
+import { canvas, faceDetectionNet, faceDetectionOptions } from "./common";
 
 export interface IFace {
     score: number;
