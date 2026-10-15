@@ -58,6 +58,7 @@ export default class App {
                 const pngFile = await heicConvert(inputFile);
                 return await this.runInternalConvert({ inputFile: pngFile, extension, fileName, args, output });
             }
+            console.error(error);
         }
     }
 
