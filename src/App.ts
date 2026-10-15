@@ -47,10 +47,9 @@ export default class App {
             // error...
             throw new Error(`${rs.statusText}\r\n${await rs.text()}`);
         }
-        let input = await rs.arrayBuffer();
 
         const inputFile = await file({ mode: 0o644, prefix: "tmp-" , postfix: extension});
-        await writeFile(inputFile.path, input as any);
+        await writeFile(inputFile.path, rs.body);
 
         try {
             return await this.runInternalConvert({ inputFile, extension, fileName, args, output });
