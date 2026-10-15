@@ -41,6 +41,7 @@ ENV HOME="/tmp"
 
 # 1. TELL THE RIC PACKAGES WHERE TO FIND THE HANDLER MODULE
 ENV LAMBDA_TASK_ROOT=${FUNCTION_DIR}
+ENV AWS_LAMBDA_RUNTIME_VERBOSE 1
 
 COPY dist ${FUNCTION_DIR}/dist
 COPY models ${FUNCTION_DIR}/models
@@ -52,5 +53,7 @@ COPY node_modules ${FUNCTION_DIR}/node_modules
 WORKDIR ${FUNCTION_DIR}
 
 # ENTRYPOINT ["/usr/local/bin/npx", "aws-lambda-ric"]
-ENTRYPOINT ["/usr/local/bin/node", "/function/node_modules/aws-lambda-ric/index.mjs"]
-CMD [ "index.handler" ]
+# ENTRYPOINT ["/usr/local/bin/node", "/function/node_modules/aws-lambda-ric/index.mjs"]
+# CMD [ "index.handler" ]
+ENTRYPOINT ["npx", "aws-lambda-ric"]
+CMD ["index.handler"]
