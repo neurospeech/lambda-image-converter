@@ -46,7 +46,7 @@ COPY dist ${FUNCTION_DIR}/dist
 COPY models ${FUNCTION_DIR}/models
 COPY package.json ${FUNCTION_DIR}
 COPY src ${FUNCTION_DIR}/src
-COPY index.js ${FUNCTION_DIR}
+COPY index.mjs ${FUNCTION_DIR}
 COPY node_modules ${FUNCTION_DIR}/node_modules
 
 WORKDIR ${FUNCTION_DIR}
