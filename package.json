@@ -3,7 +3,6 @@
   "version": "1.0.18",
   "description": "Lambda Image Converter Container",
   "main": "index.js",
-  "type": "module",
   "directories": {
     "test": "tests"
   },
