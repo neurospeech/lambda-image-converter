@@ -9,6 +9,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "push": "git add -A && git commit -m \"dep vb\" && npm version patch",
     "postversion": "git push --follow-tags"
   },
   "repository": {
