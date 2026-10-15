@@ -74,7 +74,7 @@ export default class App {
         let t = await file({ mode: 0o644, prefix: "tmp-", postfix: extension });
 
 
-        var templateClass = require("../dist/formats/" + fileName).default;
+        var { default: templateClass } = await import("../dist/formats/" + fileName + ".js");
 
         var template = new (templateClass)();
 

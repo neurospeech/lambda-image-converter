@@ -1,7 +1,7 @@
 import { parse } from "path";
-import sharp = require("sharp");
-const { file } = require("tmp-promise");
-const tmp = require('tmp');
+import  sharp from "sharp";
+import { file } from "tmp-promise";
+import tmp from 'tmp';
 
 tmp.setGracefulCleanup();
 
