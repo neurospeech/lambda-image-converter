@@ -3,10 +3,10 @@
 // import '@tensorflow/tfjs-node';
 // import "@tensorflow/tfjs-backend-webgl";
 import "@tensorflow/tfjs-backend-wasm";
-import * as faceapi from "./faceapi.js";
+import faceapi from "./faceapi.js";
 
 // implements nodejs wrappers for HTMLCanvasElement, HTMLImageElement, ImageData
-import canvas = require("canvas");
+import canvas from "canvas";
 
 // patch nodejs environment, we need to provide an implementation of
 // HTMLCanvasElement and HTMLImageElement
