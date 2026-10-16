@@ -1,6 +1,4 @@
-import * as faceApi from "./faceapi.js";
-
-const faceapi = faceApi as any;
+import faceapi from "./faceapi.js";
 
 export const faceDetectionNet = faceapi.nets.ssdMobilenetv1;
 // export const faceDetectionNet = faceapi.nets.tinyFaceDetector;
