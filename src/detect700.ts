@@ -1,6 +1,5 @@
 import sharp from "sharp";
-import * as faceapi from "./common/faceapi.js";
-const faceApi = faceapi as any;
+import faceapi from "./common/faceapi.js";
 import { Box, FaceDetection } from "@vladmandic/face-api";
 
 import { canvas, faceDetectionNet, faceDetectionOptions } from "./common/index.js";
@@ -12,9 +11,9 @@ export interface IFace {
 
 export default async function detect(input): Promise<IFace[]> {
 
-    await faceApi.tf.setBackend("wasm");
+    await faceapi.tf.setBackend("wasm");
 
-    await faceDetectionNet.loadFromDisk(__dirname + "/../models");
+    await faceDetectionNet.loadFromDisk(import.meta.dirname + "/../models");
 
     const { height } = await sharp(input).metadata();
     const scale = height / 700;
@@ -25,7 +24,7 @@ export default async function detect(input): Promise<IFace[]> {
         .toBuffer();
 
     const img: any = await canvas.loadImage(imgSmall);
-    const detections: FaceDetection[] = await faceApi.detectAllFaces(img, faceDetectionOptions);
+    const detections: FaceDetection[] = await faceapi.detectAllFaces(img, faceDetectionOptions);
     return detections.map((s) => ({
         score: s.score,
         box: s.box.rescale(scale)

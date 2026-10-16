@@ -1,19 +1,18 @@
-import * as faceapi from "./common/faceapi.js";
-const faceApi = faceapi as any;
+import faceapi from "./common/faceapi.js";
 import { FaceDetection } from "@vladmandic/face-api";
 
 import { canvas, faceDetectionNet, faceDetectionOptions } from "./common/index.js";
 
 export default async function detect(input): Promise<FaceDetection[]> {
 
-  await faceApi.tf.setBackend("wasm");
+  await faceapi.tf.setBackend("wasm");
 
-  await faceApi.tf.ready();
+  await faceapi.tf.ready();
 
-  await faceDetectionNet.loadFromDisk(__dirname + "/../models");
+  await faceDetectionNet.loadFromDisk(import.meta.dirname + "/../models");
 
   const img: any = await canvas.loadImage(input);
-  const detections = await faceApi.detectAllFaces(img, faceDetectionOptions);
+  const detections = await faceapi.detectAllFaces(img, faceDetectionOptions);
 
   return detections;
 }
