@@ -1,7 +1,7 @@
-import * as fs from "fs";
-import * as path from "path";
+import fs from "fs";
+import path from "path";
 
-const baseDir = path.resolve(__dirname, "../out");
+const baseDir = path.resolve(import.meta.dirname, "../out");
 
 export function saveFile(fileName: string, buf: Buffer) {
   if (!fs.existsSync(baseDir)) {
