@@ -49,6 +49,9 @@ export default class App {
         }
 
         const inputFile = await file({ mode: 0o644, prefix: "tmp-" , postfix: extension});
+
+        console.log(`Saved ${url} to ${inputFile.path}`);
+
         await writeFile(inputFile.path, rs.body);
 
         try {
